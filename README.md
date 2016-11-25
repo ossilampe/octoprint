@@ -1,4 +1,6 @@
-# octoprint
+# octoprint per Relay Drucker ON / OFF 
+
+* [wichtig ist die formatierung der config yaml beibehalten]
 
 um per Octoprint ein Ralais zu schalten ist es notwendig dieses richtig anzuschliessen
 ![Pinout Raspberry Pi3](https://github.com/ossilampe/octoprint/blob/master/RP2_Pinout.png)  
