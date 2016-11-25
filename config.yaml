@@ -1,0 +1,100 @@
+accessControl:
+  salt: rI1zHeAA6yawY5QgsEogUwWhfXXKJjnd
+api:
+  key: B601CB7CCA4845E894166727D1D2FA89
+appearance: {}
+feature: {}
+gcodeViewer: {}
+plugins:
+  announcements:
+    channels:
+      _important:
+        read_until: 1478614200
+  cura:
+    cura_engine: /usr/local/bin/cura_engine
+  discovery:
+    publicPort: 80
+    upnpUuid: 1d45488a-f384-4c3e-b71d-b5bdbd5c7987
+  softwareupdate:
+    _config_version: 4
+    checks:
+      octoprint:
+        checkout_folder: /home/pi/OctoPrint
+        prerelease: false
+        prerelease_channel: null
+printerParameters: {}
+printerProfiles:
+  default: drucker
+serial:
+  autoconnect: true
+  maxCommunicationTimeouts: {}
+  timeout: {}
+server:
+  commands:
+    serverRestartCommand: sudo service octoprint restart
+    systemRestartCommand: sudo shutdown -r now
+  firstRun: false
+  secretKey: AP1KkF01YjfCdc8LsYHBoY64noGXQU8z
+system:
+  actions:
+  - action: shutdown
+    async: true
+    command: sudo shutdown -h now
+    confirm: You are about to shutdown the system.
+    ignore: true
+    name: Shutdown
+  - action: reboot
+    async: true
+    command: sudo shutdown -r now
+    confirm: You are about to reboot the system
+    ignore: true
+    name: Reboot
+  - action: restart
+    async: true
+    command: sudo service octoprint restart
+    confirm: You are about to restart OctoPrint
+    ignore: true
+    name: Restart OctoPrint
+  - action: divider
+    ignore: true
+  - action: printer on
+    command: gpio -g write 18 1
+    name: Drucker Einschalten
+  - action: printer off
+    command: gpio -g write 18 0
+    confirm: Wollen Sie den Drucker Ausschalten
+    name: Drucker Ausschalten
+  - action: divider
+    ignore: true
+  - action: bauraumheizung on
+    command: gpio -g write 22 1
+    name: Heizung Einschalten
+  - action: bauraumheizung off
+    command: gpio -g write 22 0
+    name: Heizung Ausschalten
+  - action: divider
+    ignore: true
+  - action: licht on
+    command: gpio -g write 21 1
+    name: Beleuchtung Einschalten
+  - action: licht off
+    command: gpio -g write 21 0
+    name: Beleuchtung Ausschalten
+temperature:
+  profiles:
+  - bed: '110'
+    extruder: '245'
+    name: ABS
+  - bed: 60
+    extruder: '208'
+    name: PLA
+webcam:
+  ffmpeg: /usr/bin/avconv
+  snapshot: http://127.0.0.1:8080/?action=snapshot
+  stream: /webcam/?action=stream
+  timelapse:
+    fps: 25
+    options:
+      interval: 5
+    postRoll: 10
+    type: timed
